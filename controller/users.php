@@ -10,6 +10,16 @@ if(isset($_POST['btn_register']))
     $pos = $_POST['jabatan'];
 
     addUser($uname, $pass, $pos);
+
+}
+
+if(isset($_POST['btnUpdate']))
+{
+    $uname = $_POST['uname'];
+    $pass = $_POST['password1'];
+
+    editUser($uname, $pass);
+    
 }
 
 // ---------------------------------------------------------
@@ -32,10 +42,10 @@ function addUser($uname,$pwd,$pos)
     mysqli_close($mysqli);
 }
 
-function editUser($pwd)
+function editUser($uname, $pwd)
 {
     global $mysqli;
-    $sql = "UPDATE tuser SET password '" . $pass . "' WHERE id = '" . $id . "' ";
+    $sql = "UPDATE tUser SET user_pword = '" . $pwd . "' WHERE user_uname = '" . $uname . "' ";
     if (mysqli_query($mysqli, $sql))
     {
         echo "berhasil mengubah password!";

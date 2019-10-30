@@ -38,8 +38,8 @@
 					<div class="panel-body">
 							<div class="col-md-6">
 							<?php
-								$iduser = $_SESSION["username"];
-								$sql = "SELECT * FROM User WHERE uname='" . $id . "'";
+								$id = $_SESSION['uname'];
+								$sql = "SELECT * FROM tUser WHERE user_uname='" . $id . "'";
 								$result = mysqli_query($mysqli, $sql);
 								$uname = "";
 								$pass = "";
@@ -48,15 +48,19 @@
 								{
 									while($row = $result->fetch_assoc())
 									{
-										$uname = $row["username"];
-										$pass = $row["password"];
+										$uname = $row["user_uname"];
+										$pass = $row["user_pword"];
+										$pos = $row["user_jabatan"];
 									}
 								}
 						    ?>
 							<form role="form" action="controller/users.php" method="POST"> 
 								<label>User Name</label>
 								<div class="form-group">
-									<input class="form-control" placeholder="Username" name="username" type="username" autofocus="" value="<?=$iduser?>" disabled>
+									<input class="form-control" placeholder="Username" name="username" type="username" autofocus="" value="<?PHP echo $uname; ?>" disabled>
+								</div>
+								<div class="form-group">
+									<input type="hidden" class="form-control" placeholder="" name="uname" type="text" autofocus="" value="<?PHP echo $uname; ?>">
 								</div>
 								<div class="form-group">
 									<input class="form-control" placeholder="Old Password" name="password" type="password" value="" required>
