@@ -10,7 +10,7 @@ if (isset($_SESSION["user_logged_in"]))
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Lumino - Login</title>
+	<title>Login</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/datepicker3.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
@@ -22,7 +22,7 @@ if (isset($_SESSION["user_logged_in"]))
 				<div class="panel-heading">Log in</div>
 				<div class="panel-body">
 
-					<form role="form" method="POST" action="controllers/login.php">
+					<form role="form" method="POST" action="controller/login.php">
 						<fieldset>
 							<div class="form-group">
 								<input class="form-control" id="username" placeholder="Username" name="username" type="text" autofocus="">
@@ -58,7 +58,7 @@ if (isset($_SESSION["user_logged_in"]))
 							console.log(data);
 							if(data == 1)
 							{
-								// window.open(".php","_self") NTAR DI kasik
+								window.open("register.php","_self")
 							}
 							else
 								$("#error").text("WRONG USERNAME AND PASSWORD")
@@ -68,9 +68,10 @@ if (isset($_SESSION["user_logged_in"]))
 				})
 				$("#submit").click(function(){
 					$.post("controller/login.php",{username: username.value, password: password.value},function(data){		
+						console.log(data);
 						if(data == 1)
 						{
-							// window.open("list_nota_persembahan.php","_self")
+							window.open("register.php","_self")
 						}
 						else
 							$("#error").text("wrong username or password")

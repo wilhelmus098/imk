@@ -26,7 +26,14 @@
 							</div>
 							<div class="form-group">
 								<input class="form-control" placeholder="Password" name="password" type="password" value="">
-							</div>					
+							</div>
+							<div class="form-group">
+								<label>JABATAN</label>
+								<select class="form-control" name="jabatan">
+									<option value="PENDETA">ADMIN</option>
+									<option value="PENGINJIL">BENDAHARA</option>
+								</select>
+							</div>				
 							<input type="submit" class="btn btn-success"name="btn_register" value="SUBMIT">		
 					</form>
 				</div>
