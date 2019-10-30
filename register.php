@@ -19,7 +19,7 @@
 			<div class="login-panel panel panel-default">
 				<div class="panel-heading">Register Account</div>
 				<div class="panel-body">
-					<form role="form" action="controllers/users.php" method="POST"> 
+					<form role="form" action="controller/users.php" method="POST"> 
 						<fieldset>
 							<div class="form-group">
 								<input class="form-control" placeholder="Username" name="username" type="username" autofocus="">
@@ -30,8 +30,8 @@
 							<div class="form-group">
 								<label>JABATAN</label>
 								<select class="form-control" name="jabatan">
-									<option value="PENDETA">ADMIN</option>
-									<option value="PENGINJIL">BENDAHARA</option>
+									<option value="ADMIN">ADMIN</option>
+									<option value="BENDAHARA">BENDAHARA</option>
 								</select>
 							</div>				
 							<input type="submit" class="btn btn-success"name="btn_register" value="SUBMIT">		
