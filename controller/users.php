@@ -4,6 +4,7 @@ include '../checksession.php';
 
 if(isset($_POST['btn_register']))
 {
+    $id = $_POST['id'];
     $uname = $_POST['username'];
     $pass = $_POST['password'];
     $pos = $_POST['jabatan'];
@@ -28,5 +29,19 @@ function addUser($uname,$pwd,$pos)
     }
 
     mysqli_close($mysqli);
+}
+
+function editUser($pwd)
+{
+    global $mysqli;
+    $sql = "UPDATE tuser SET password '" . $pass . "' WHERE id = '" . $id . "' ";
+    if (mysqli_query($mysqli, $sql))
+    {
+        
+    }
+    else
+    {
+        echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
+    }
 }
 ?>
