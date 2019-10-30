@@ -38,7 +38,7 @@ function editUser($pwd)
     $sql = "UPDATE tuser SET password '" . $pass . "' WHERE id = '" . $id . "' ";
     if (mysqli_query($mysqli, $sql))
     {
-        
+        echo "berhasil mengubah password!";
     }
     else
     {
