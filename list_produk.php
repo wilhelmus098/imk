@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <?php
 	include 'conn.php';
-	include 'checksession.php';
+	//include 'checksession.php';
 
 	$limit = 4;  
 	if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
 	$start_from = ($page-1) * $limit;  
 
-	$sql = "SELECT * FROM Gereja ORDER BY idGereja ASC LIMIT $start_from, $limit";  
+	$sql = "SELECT * FROM tProduk ORDER BY produk_kategori ASC LIMIT $start_from, $limit";  
 	$result = mysqli_query($mysqli, $sql);  
 	?>
 <html>
@@ -39,22 +39,23 @@
 </head>
 <body>
 <?php
-	if($_SESSION['jabatan'] == "PENDETA")
-	{
-		require_once('sidemenupendeta.php');
-	}
-	if($_SESSION['jabatan'] == "BENDAHARA")
-	{
-		require_once('sidemenu.php');
-	}
-	if($_SESSION['jabatan'] == "PENGINJIL")
-	{
-		require_once('sidemenupemimpin.php');
-	}		
-	if($_SESSION['jabatan'] == "KOOR PUSAT" || $_SESSION['jabatan'] == "KOOR CABANG")
-	{
-		require_once('sidemenukoor.php');
-	}	
+	require_once('sidemenu.php');
+	// if($_SESSION['jabatan'] == "PENDETA")
+	// {
+	// 	require_once('sidemenupendeta.php');
+	// }
+	// if($_SESSION['jabatan'] == "BENDAHARA")
+	// {
+	// 	require_once('sidemenu.php');
+	// }
+	// if($_SESSION['jabatan'] == "PENGINJIL")
+	// {
+	// 	require_once('sidemenupemimpin.php');
+	// }		
+	// if($_SESSION['jabatan'] == "KOOR PUSAT" || $_SESSION['jabatan'] == "KOOR CABANG")
+	// {
+	// 	require_once('sidemenukoor.php');
+	// }	
 ?>
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
@@ -62,7 +63,7 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">LIST GEREJA</li>
+				<li class="active">LIST PRODUK</li>
 			</ol>
 		</div><!--/.row-->
 		
@@ -79,20 +80,23 @@
 							<table class="table table-hover">
 								<thead>
 								  <tr>
-								  	<th>ID GEREJA</th>
-									<th>JENIS GEREJA</th>
-									<th>KOTA GEREA
-									<th>ALAMAT GEREJA</th>
-									<th>ACTION</th>
+								  	<th>ID PRODUK</th>
+									<th>NAMA PRODUK</th>
+									<th>KATEGORI PRODUK</th>
+									<th>HARGA PRODUK</th>
+									<th>KUANTITAS PRODUK</th>
+									<th>DESC PRODUK</th>
 								  </tr>
 								</thead>
 								<tbody>
 								<?php while($row = $result->fetch_assoc()) { ?>
 									<tr>
-										<td><?=$row["idGereja"]?></td>
-										<td><?=$row["JenisGereja"]?></td>
-										<td><?=$row["Nama"]?></td>
-										<td><?=$row["AlamatGereja"]?></td>
+										<td><?=$row["produk_id"]?></td>
+										<td><?=$row["produk_nama"]?></td>
+										<td><?=$row["produk_kategori"]?></td>
+										<td><?=$row["produk_harga"]?></td>
+										<td><?=$row["produk_kuantitas"]?></td>
+										<td><?=$row["produk_deskripsi"]?></td>
 										<td>
 											<button type="submit" class="btn btn-success" name="edit_gereja" value="<?=$row["idGereja"]?>"><i class="glyphicon glyphicon-edit"></i></button>
 										</td>
@@ -109,7 +113,7 @@
 			
 		</div><!-- /.row -->
 		<?php  
-			$sql = "SELECT COUNT(idGereja) FROM Gereja";  
+			$sql = "SELECT COUNT(produk_id) FROM tProduk";  
 			$rs_result = mysqli_query($mysqli, $sql);  
 			$row = mysqli_fetch_row($rs_result);  
 			$total_records = $row[0];  
@@ -117,7 +121,7 @@
 			$pagLink = "<nav><ul class='pagination'>";  
 			for ($i=1; $i<=$total_pages; $i++) 
 			{  
-			    $pagLink .= "<li><a href='list_gereja.php?page=".$i."'>".$i."</a></li>";  
+			    $pagLink .= "<li><a href='list_produk.php?page=".$i."'>".$i."</a></li>";  
 			};  
 			echo $pagLink . "</ul></nav>";  
 		?>
@@ -149,7 +153,7 @@
 			        itemsOnPage: <?php echo $limit;?>,
 			        cssStyle: 'light-theme',
 					currentPage : <?php echo $page;?>,
-					hrefTextPrefix : 'list_gereja.php?page='
+					hrefTextPrefix : 'list_produk.php?page='
 			    });
 		});
     </script>
