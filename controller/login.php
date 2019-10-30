@@ -18,7 +18,7 @@ if ($row == 1)
 	while($row = $result->fetch_assoc()) 
 	{
 		$_SESSION['uname'] = $row['user_uname'];
-		$_SESSION["user_jabatan"] = $row['user_jabatan'];
+		$_SESSION["jabatan"] = $row['user_jabatan'];
 	}
 	header("Location:../register.php");
 }
