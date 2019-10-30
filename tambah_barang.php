@@ -35,10 +35,10 @@
 				<div class="panel panel-default"  id="section-to-print">
 					<div class="panel-body">
 						<div class="col-md-6">
-							<form role="form" method="POST" action="controller/persembahan.php">
+							<form role="form" method="POST" action="controller/barang.php">
 									<div class="form-group">
 										<label>Nama Barang</label>
-										<input type="date" class="form-control" name="namaBarang" placeholder="" required>
+										<input type="text" class="form-control" name="namaBarang" placeholder="" required>
 									</div>
 
 									<div class="form-group">
@@ -64,10 +64,10 @@
 									</div>
 
 									<div class="form-group">
-										<label>Deksripsi</label>
-										<input type="text" class="form-control" name="deksripsi" placeholder="" required>
+										<label>Deskripsi</label>
+										<input type="text" class="form-control" name="deskripsi" placeholder="" required>
 									</div>
-									<button class='btn btn-primary m-2' style="width:200px"  type="submit" name="btn_insert_nota" value="<?=$idterakhir?>">SAVE</button>
+									<button class='btn btn-primary m-2' style="width:200px"  type="submit" name="btn_insert_barang" value="<?=$idterakhir?>">SAVE</button>
 							</form>
 						</div>
 					</div>
