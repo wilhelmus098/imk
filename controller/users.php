@@ -17,9 +17,10 @@ if(isset($_POST['btn_register']))
 function addUser($uname,$pwd,$pos)
 {
     global $mysqli;
-    $sql = "INSERT INTO tuser VALUE('" . $uname . "','" . $pwd . "','" . $pos . "')";
+    $sql = "INSERT INTO tUser VALUE(null, '" . $uname . "','" . $pwd . "','" . $pos . "')";
     if (mysqli_query($mysqli, $sql)) 
     {
+        echo "<script type='text/javascript'>alert('register succeed');</script>";
        header('Location:../register.php');
     }
     else
