@@ -20,7 +20,7 @@ if ($row == 1)
 		$_SESSION['uname'] = $row['user_uname'];
 		$_SESSION["jabatan"] = $row['user_jabatan'];
 	}
-	header("Location:../register.php");
+	header("Location:../index.php");
 }
 
 else if($row['pass'] == null)

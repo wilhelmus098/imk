@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 	include 'conn.php';
-	//include 'checksession.php';
+	include 'checksession.php';
 
 	$limit = 4;  
 	if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  

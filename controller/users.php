@@ -19,7 +19,11 @@ if(isset($_POST['btnUpdate']))
     $pass = $_POST['password1'];
 
     editUser($uname, $pass);
-    
+}
+
+if(isset($_POST['btn_login']))
+{
+    header("Location:../login.php");
 }
 
 // ---------------------------------------------------------
@@ -55,4 +59,6 @@ function editUser($uname, $pwd)
         echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
     }
 }
+
+
 ?>
