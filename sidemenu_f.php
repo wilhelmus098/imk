@@ -1,6 +1,6 @@
 					<?php
-						$sql = "SELECT DISTINCT tProduk.produk_kategori FROM tProduk";  
-						$result = mysqli_query($mysqli, $sql);
+						$sql99 = "SELECT DISTINCT tProduk.produk_kategori FROM tProduk";  
+						$result99 = mysqli_query($mysqli, $sql99);
 					?>
 	<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
 		<div class="container-fluid">
@@ -37,9 +37,9 @@
 					
 				<ul class="children collapse" id="sub-item-1">
 
-					<?php while($row = $result->fetch_assoc()) { ?>
+					<?php while($row99 = $result99->fetch_assoc()) { ?>
 						<li><a class="" href="create_nota_persembahan.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> <?=$row["produk_kategori"]?>
+						<span class="fa fa-arrow-right">&nbsp;</span> <?=$row99["produk_kategori"]?>
 						</a></li>
 
 					<?php } ?>

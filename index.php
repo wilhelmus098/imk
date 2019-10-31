@@ -83,7 +83,7 @@
 											{
 												echo "Out of Stok";
 											}
-											if($row['produk_kuantitas'] < 50)
+											if($row['produk_kuantitas'] < 50 && $row['produk_kuantitas'] > 1)
 											{
 												echo "< 50";
 											}
