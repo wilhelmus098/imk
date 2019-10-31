@@ -39,11 +39,7 @@
 </head>
 <body>
 <?php
-	require_once('sidemenu.php');
-	// if($_SESSION['jabatan'] == "PENDETA")
-	// {
-	// 	require_once('sidemenupendeta.php');
-	// }	
+	require_once('sidemenu_f.php');
 ?>
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
@@ -64,15 +60,15 @@
 				<div class="panel panel-default"  id="section-to-print">
 					<div class="panel-body">
 						<div class="col-md-12">
-							<form method="POST" action=controllers/gereja.php>
+							<form method="POST" action=controller/barang.php>
 							<table class="table table-hover">
 								<thead>
 								  <tr>
 									<th>NAMA PRODUK</th>
 									<th>KATEGORI PRODUK</th>
 									<th>HARGA PRODUK</th>
-									<th>KUANTITAS PRODUK</th>
-									<th>DESC PRODUK</th>
+									<th>STOK</th>
+									<th>DETAIL</th>
 								  </tr>
 								</thead>
 								<tbody>
@@ -81,7 +77,6 @@
 										<td><?=$row["produk_nama"]?></td>
 										<td><?=$row["produk_kategori"]?></td>
 										<td><?=$row["produk_harga"]?></td>
-										<td><?=$row["produk_kuantitas"]?></td>
 										<td>
 										<?php
 											if($row['produk_kuantitas'] == '0')
@@ -98,9 +93,8 @@
 											}
 										?>
 										</td>
-										<td><?=$row["produk_deskripsi"]?></td>
 										<td>
-											<button type="submit" class="btn btn-success" name="detail_produk" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-edit"></i></button>
+											<button type="submit" class="btn btn-success" name="btn_view" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-edit"></i></button>
 										</td>
 									</tr>
 								<?php } ?>
@@ -123,7 +117,7 @@
 			$pagLink = "<nav><ul class='pagination'>";  
 			for ($i=1; $i<=$total_pages; $i++) 
 			{  
-			    $pagLink .= "<li><a href='list_product_f.php?page=".$i."'>".$i."</a></li>";  
+			    $pagLink .= "<li><a href='index.php?page=".$i."'>".$i."</a></li>";  
 			};  
 			echo $pagLink . "</ul></nav>";  
 		?>
@@ -155,7 +149,7 @@
 			        itemsOnPage: <?php echo $limit;?>,
 			        cssStyle: 'light-theme',
 					currentPage : <?php echo $page;?>,
-					hrefTextPrefix : 'list_product_f.php?page='
+					hrefTextPrefix : 'index.php?page='
 			    });
 		});
     </script>

@@ -8,7 +8,7 @@
 	$start_from = ($page-1) * $limit;  
 
 	$sql = "SELECT * FROM tProduk ORDER BY produk_kategori ASC LIMIT $start_from, $limit";  
-	$result = mysqli_query($mysqli, $sql);  
+	$result = mysqli_query($mysqli, $sql);
 	?>
 <html>
 <head>

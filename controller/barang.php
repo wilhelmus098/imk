@@ -76,4 +76,10 @@ function delete($id)
     }
     mysqli_close($mysqli);
 }
+
+if(isset($_POST['btn_view']))
+{
+    //header('Location:../view_nota.php?idnota='.$_POST['btn_view']);
+    echo($_POST['btn_view']);
+}
 ?>
