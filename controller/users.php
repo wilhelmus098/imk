@@ -23,7 +23,7 @@ if(isset($_POST['btnUpdate']))
 
 if(isset($_POST['btn_login']))
 {
-    header("Location:../login.php");
+    header("Location:../logout.php");
 }
 
 // ---------------------------------------------------------

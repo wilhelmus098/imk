@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+	session_start();
 	include 'conn.php';
 	//include 'checksession.php';
 
@@ -39,7 +40,15 @@
 </head>
 <body>
 <?php
+if (isset($_SESSION["user_logged_in"]))
+{
+	require_once('sidemenu.php');
+}
+if (!isset($_SESSION["user_logged_in"]))
+{
 	require_once('sidemenu_f.php');
+}
+	
 ?>
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
@@ -61,6 +70,13 @@
 					<div class="panel-body">
 						<div class="col-md-12">
 							<form method="POST" action=controller/barang.php>
+
+<!--////////////////////////////////////////////////////////////////KLO GAK LOGIN COY !!!//////////////////////////////////////////////////////////////////////////////////////. -->
+
+<?php
+if (!isset($_SESSION["user_logged_in"]))
+{ ?>
+
 							<table class="table table-hover">
 								<thead>
 								  <tr>
@@ -100,7 +116,60 @@
 								<?php } ?>
 								</tbody>
 						  	</table>
+<?php } ?>
 
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+<!--////////////////////////////////////////////////////////////////KLO DAH LOGIN COY !!!//////////////////////////////////////////////////////////////////////////////////////. -->
+
+<?php
+if (isset($_SESSION["user_logged_in"]))
+{ ?>
+
+							<table class="table table-hover">
+								<thead>
+								  <tr>
+									<th>ID PRODUK</th>
+									<th>NAMA PRODUK</th>
+									<th>KATEGORI PRODUK</th>
+									<th>HARGA PRODUK</th>
+									<th>STOK</th>
+									<th>DESKRIPSI</th>
+								  </tr>
+								</thead>
+								<tbody>
+								<?php while($row = $result->fetch_assoc()) { ?>
+									<tr>
+										<td><?=$row["produk_nama"]?></td>
+										<td><?=$row["produk_kategori"]?></td>
+										<td><?=$row["produk_harga"]?></td>
+										<td>
+										<?php
+											if($row['produk_kuantitas'] == '0')
+											{
+												echo "Out of Stok";
+											}
+											if($row['produk_kuantitas'] < 50 && $row['produk_kuantitas'] > 1)
+											{
+												echo "< 50";
+											}
+											if($row['produk_kuantitas'] >= 50)
+											{
+												echo "> 50";
+											}
+										?>
+										</td>
+										<td>
+											<button type="submit" class="btn btn-success" name="btn_view" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-edit"></i></button>
+										</td>
+									</tr>
+								<?php } ?>
+								</tbody>
+						  	</table>
+<?php } ?>
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 						 	</form> 
 						</div>
 					</div>
@@ -108,6 +177,9 @@
 			</div><!-- /.col-->
 			
 		</div><!-- /.row -->
+<?php
+	print_r($_SESSION);
+?>
 		<?php  
 			$sql = "SELECT COUNT(produk_id) FROM tProduk";  
 			$rs_result = mysqli_query($mysqli, $sql);  
