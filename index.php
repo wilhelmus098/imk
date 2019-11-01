@@ -4,11 +4,21 @@
 	include 'conn.php';
 	//include 'checksession.php';
 
+	
+	
 	$limit = 4;  
 	if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
 	$start_from = ($page-1) * $limit;  
 
-	$sql = "SELECT * FROM tProduk ORDER BY produk_kategori ASC LIMIT $start_from, $limit";  
+	if(isset($_GET['cat']))
+	{
+		$sql = "SELECT * FROM tProduk WHERE produk_kategori='" . $_GET['cat'] . "' ORDER BY produk_nama ASC LIMIT $start_from, $limit";  
+	}
+	else
+	{
+		$sql = "SELECT * FROM tProduk ORDER BY produk_kategori ASC LIMIT $start_from, $limit";  
+	}
+
 	$result = mysqli_query($mysqli, $sql);
 	?>
 <html>

@@ -38,7 +38,7 @@
 				<ul class="children collapse" id="sub-item-1">
 
 					<?php while($row99 = $result99->fetch_assoc()) { ?>
-						<li><a class="" href="create_nota_persembahan.php">
+						<li><a class="" href="controller/cat.php?cat=<?=$row99["produk_kategori"]?>">
 						<span class="fa fa-arrow-right">&nbsp;</span> <?=$row99["produk_kategori"]?>
 						</a></li>
 
