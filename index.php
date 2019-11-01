@@ -126,6 +126,7 @@ if (isset($_SESSION["user_logged_in"]))
 									<th>HARGA PRODUK</th>
 									<th>STOK</th>
 									<th>DESKRIPSI</th>
+									<th>MANAGE</th>
 								  </tr>
 								</thead>
 								<tbody>
@@ -133,10 +134,13 @@ if (isset($_SESSION["user_logged_in"]))
 									<tr>
 										<td><?=$row["produk_id"]?></td>
 										<td><?=$row["produk_nama"]?></td>
+										<td><?=$row["produk_kategori"]?></td>
 										<td><?=$row["produk_harga"]?></td>
-										<td><?=$row["produk_harga"]?></td>
+										<td><?=$row["produk_kuantitas"]?></td>
+										<td><?=$row["produk_deskripsi"]?></td>
 										<td>
-											<button type="submit" class="btn btn-success" name="btn_view" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-edit"></i></button>
+											<button type="submit" class="btn btn-success" name="btn_edit" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-edit"></i></button>
+											<button type="submit" class="btn btn-success" name="btn_view" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-info-sign"></i></button>
 										</td>
 									</tr>
 								<?php } ?>
