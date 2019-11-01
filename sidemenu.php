@@ -47,10 +47,10 @@
 				<em class="fa fa-navicon">&nbsp;</em> Manage Product <span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-2">
-					<li><a class="" href="create_gereja.php">
+					<li><a class="" href="tambah_barang.php">
 						<span class="fa fa-arrow-right">&nbsp;</span> Add Product
 					</a></li>
-					<li><a class="" href="list_gereja.php">
+					<li><a class="" href="index.php">
 						<span class="fa fa-arrow-right">&nbsp;</span> List Product
 					</a></li>
 				</ul>
@@ -70,7 +70,7 @@
 				<em class="fa fa-navicon">&nbsp;</em> Users <span data-toggle="collapse" href="#sub-item-3" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-3">
-					<li><a class="" href="updateUser.php">
+					<li><a class="" href="update_user.php">
 						<span class="fa fa-arrow-right">&nbsp;</span> Ubah Password
 					</a></li>
 				</ul>

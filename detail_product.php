@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+session_start();
 include 'conn.php';
 //include 'checksession.php';
 if (isset($_SESSION["user_logged_in"]))

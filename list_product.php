@@ -63,7 +63,7 @@
 				<div class="panel panel-default"  id="section-to-print">
 					<div class="panel-body">
 						<div class="col-md-12">
-							<form method="POST" action=controllers/gereja.php>
+							<form method="POST" action=edit_barang.php>
 							<table class="table table-hover">
 								<thead>
 								  <tr>
@@ -85,7 +85,7 @@
 										<td><?=$row["produk_kuantitas"]?></td>
 										<td><?=$row["produk_deskripsi"]?></td>
 										<td>
-											<button type="submit" class="btn btn-success" name="detail_produk" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-edit"></i></button>
+											<button type="submit" class="btn btn-success" name="edit_produk" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-edit"></i></button>
 										</td>
 									</tr>
 								<?php } ?>

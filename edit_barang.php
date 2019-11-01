@@ -2,13 +2,15 @@
 <?php
 	include 'conn.php';
 	include 'checksession.php';
-	require_once('sidemenu.php');
+
+	$sql = "SELECT * FROM tProduk WHERE produk_id = '" . $_GET["id_produk"] . "'";  
+	$result = mysqli_query($mysqli, $sql);
 ?>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Tambah Barang</title>
+	<title>Edit Barang</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/datepicker3.css" rel="stylesheet">
@@ -23,10 +25,10 @@
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
-				<li><a href="list_nota_persembahan.php">
+				<li><a href="list_product.php">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Tambah Barang!</li>
+				<li class="active">Edit Barang!</li>
 			</ol>
 		</div><!--/.row-->
 		
@@ -37,9 +39,10 @@
 					<div class="panel-body">
 						<div class="col-md-6">
 							<form role="form" method="POST" action="controller/barang.php">
+								<?php while($row = $result->fetch_assoc()) { ?>
 									<div class="form-group">
-										<label>Nama Barang</label>
-										<input type="text" class="form-control" name="namaBarang" placeholder="" required>
+										<label>Nama Barang></label>
+										<input type="text" class="form-control" name="namaBarang" value="<?=$row['produk_nama']?>" required>
 									</div>
 
 									<div class="form-group">
@@ -56,19 +59,20 @@
 
 									<div class="form-group">
 										<label>Harga</label>
-										<input type="text" class="form-control" name="harga" placeholder="" required>
+										<input type="text" class="form-control" name="harga" value="<?=$row['produk_harga']?>" required>
 									</div>
 
 									<div class="form-group">
 										<label>Kuantitas</label>
-										<input type="text" class="form-control" name="kuantitas" placeholder="" required>
+										<input type="text" class="form-control" name="kuantitas" value="<?=$row['produk_kuantitas']?>" required>
 									</div>
 
 									<div class="form-group">
 										<label>Deskripsi</label>
-										<input type="text" class="form-control" name="deskripsi" placeholder="" required>
+										<input type="text" class="form-control" name="deskripsi" value="<?=$row['produk_deskripsi']?>" required>
 									</div>
-									<button class='btn btn-primary m-2' style="width:200px"  type="submit" name="btn_insert_barang">SAVE</button>
+									<button class='btn btn-primary m-2' style="width:200px"  type="submit" name="btn_update_barang" value="<?php echo $_GET['id_produk'];?>">SAVE</button>
+								<?php } ?>
 							</form>
 						</div>
 					</div>

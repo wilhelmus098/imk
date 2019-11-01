@@ -13,16 +13,20 @@ if(isset($_POST['btn_insert_barang']))
     add($namaBarang, $kategori, $harga, $kuantitas, $desk);
 }
 
-if(isset($_POST['btnUpdate']))
+if(isset($_POST['btn_edit'])){
+    header('Location:../edit_barang.php?id_produk='.$_POST['btn_edit']);
+}
+
+if(isset($_POST['btn_update_barang']))
 {
     $namaBarang = $_POST['namaBarang'];
     $kategori = $_POST['kategori'];
     $harga = $_POST['harga'];
     $kuantitas = $_POST['kuantitas'];
     $desk = $_POST['deskripsi'];
-    $idbarang = $_POST['idbarang'];
+    $idbarang = $_POST['btn_update_barang'];
         
-    update($namaBarang, $kategori, $harga, $kuantitas, $deks);
+    update($namaBarang, $kategori, $harga, $kuantitas, $desk, $idbarang);
 }
 
 if(isset($_POST['button_delete']))
@@ -34,13 +38,13 @@ if(isset($_POST['btn_view']))
 {
     header('Location:../detail_product.php?id_produk='.$_POST['btn_view']);
 }
-function add($namaBarang,$kategori,$harga,$kuantitas,$deks)
+function add($namaBarang,$kategori,$harga,$kuantitas,$desk)
 {
     global $mysqli;
-    $sql = "INSERT INTO tProduk VALUE(null, '" . $namaBarang . "','" . $kategori . "','" . $harga . "','" . $kuantitas . "' ,'" . $deks . "')";
+    $sql = "INSERT INTO tProduk VALUE(null, '" . $namaBarang . "','" . $kategori . "','" . $harga . "','" . $kuantitas . "' ,'" . $desk . "')";
     if (mysqli_query($mysqli, $sql)) 
     {
-       header('Location:../register.php'); // balik ke list
+       header('Location:../index.php'); // balik ke list
     }
     else
     {
@@ -50,13 +54,13 @@ function add($namaBarang,$kategori,$harga,$kuantitas,$deks)
     mysqli_close($mysqli);
 }
 
-function update($namaBarang,$kategori,$harga,$kuantitas,$deks , $idbarang)
+function update($namaBarang,$kategori,$harga,$kuantitas,$desk , $idbarang)
 {
     global $mysqli;
-    $sql = "UPDATE tProduk SET produk_nama ='" . $name . "', produk_kategori = '" . $pwd . "', produk_harga = '" . $pos . "', produk_kuantitas = '" . $idgrj ."', produk_deskripsi = '" .$desk ."' WHERE produk_id ='" . $idbarang . "'";
+    $sql = "UPDATE tProduk SET produk_nama ='" . $namaBarang . "', produk_kategori = '" . $kategori . "', produk_harga = '" . $harga . "', produk_kuantitas = '" . $kuantitas ."', produk_deskripsi = '" .$desk ."' WHERE produk_id ='" . $idbarang . "'";
     if (mysqli_query($mysqli, $sql))
     {
-        header('Location:../register.php'); // balik ke home or whatever ganti aja
+        header('Location:../index.php'); // balik ke home or whatever ganti aja
     }
     else
     {
@@ -72,7 +76,7 @@ function delete($id)
     if (mysqli_query($mysqli, $sql)) 
     {
         // echo "Record deleted successfully <a href=\"../list_gereja.php\">back to list user</a>";
-        header("Location:../register.php"); //ganti ke mana aja
+        header("Location:../index.php"); //ganti ke mana aja
     }
     else
     {
