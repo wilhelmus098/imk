@@ -2,6 +2,7 @@
 <?php
     include 'conn.php';
 	include 'checksession.php';
+	require_once('sidemenu.php');
 ?>
 <html>
 <head>

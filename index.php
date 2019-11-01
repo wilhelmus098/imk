@@ -13,23 +13,13 @@
 	?>
 <html>
 <head>
-	<link rel="stylesheet" href="pag/dist/simplePagination.css" />
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>LIST PRODUCT</title>
-
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-    <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js"></script>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    
-    </script>
-
+	<title>Lumino - Dashboard</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/datepicker3.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
-
-    
 	
 	<!--Custom Font-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -141,25 +131,10 @@ if (isset($_SESSION["user_logged_in"]))
 								<tbody>
 								<?php while($row = $result->fetch_assoc()) { ?>
 									<tr>
+										<td><?=$row["produk_id"]?></td>
 										<td><?=$row["produk_nama"]?></td>
-										<td><?=$row["produk_kategori"]?></td>
 										<td><?=$row["produk_harga"]?></td>
-										<td>
-										<?php
-											if($row['produk_kuantitas'] == '0')
-											{
-												echo "Out of Stok";
-											}
-											if($row['produk_kuantitas'] < 50 && $row['produk_kuantitas'] > 1)
-											{
-												echo "< 50";
-											}
-											if($row['produk_kuantitas'] >= 50)
-											{
-												echo "> 50";
-											}
-										?>
-										</td>
+										<td><?=$row["produk_harga"]?></td>
 										<td>
 											<button type="submit" class="btn btn-success" name="btn_view" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-edit"></i></button>
 										</td>
