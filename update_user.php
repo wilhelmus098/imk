@@ -39,8 +39,8 @@
 					<div class="panel-body">
 							<div class="col-md-6">
 							<?php
-								$id = $_SESSION['uname'];
-								$sql = "SELECT * FROM tUser WHERE user_uname='" . $id . "'";
+								$usname = $_SESSION['uname'];
+								$sql = "SELECT * FROM tUser WHERE user_uname='" . $usname . "'";
 								$result = mysqli_query($mysqli, $sql);
 								$uname = "";
 								$pass = "";

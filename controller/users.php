@@ -16,9 +16,13 @@ if(isset($_POST['btn_register']))
 if(isset($_POST['btnUpdate']))
 {
     $uname = $_POST['uname'];
-    $pass = $_POST['password1'];
+    $passlama = $_POST['password'];
+    $passbaru = $_POST['password1'];
+    $passbaru2 = $_POST['password2'];
 
-    editUser($uname, $pass);
+    cekpassword($passlama, $uname, $passbaru, $passbaru2);
+
+    // editUser($uname, $pass);
 }
 
 if(isset($_POST['btn_login']))
@@ -46,19 +50,44 @@ function addUser($uname,$pwd,$pos)
     mysqli_close($mysqli);
 }
 
-function editUser($uname, $pwd)
+function cekpassword($password, $nama, $passbaru, $passbaru2){
+    global $mysqli;
+    $sql = "SELECT * FROM tUser WHERE user_uname = '" . $nama . "'";
+    $result = mysqli_query($mysqli, $sql);
+    $passlama = "";
+
+    while($row = $result->fetch_assoc()){
+        $passlama = $row['user_pword'];
+    }
+    // echo "$passbaru<br>";
+    // echo "$passbaru2<br>";
+
+    if($password != $passlama){
+        echo "<script>alert('old password missmatch!!');history.go(-1);</script>";
+    }
+    else{
+        editUser($nama, $passbaru, $passbaru2);
+    }
+    }
+
+function editUser($uname, $passbaru, $passbaru2)
 {
     global $mysqli;
-    $sql = "UPDATE tUser SET user_pword = '" . $pwd . "' WHERE user_uname = '" . $uname . "' ";
-    if (mysqli_query($mysqli, $sql))
-    {
-        echo "berhasil mengubah password!";
-        header ("Location:../logout.php");
-    }
-    else
-    {
-        echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
-    }
+        if($passbaru != $passbaru2){
+            echo "<script>alert('new password doesn't match!!');history.go(-1);</script>";
+        }
+        else{
+            $sql = "UPDATE tUser SET user_pword = '" . $passbaru . "' WHERE user_uname = '" . $uname . "' ";
+            if (mysqli_query($mysqli, $sql))
+            {
+                header ("Location:../logout.php");
+            }
+            else
+            {
+                echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
+            }
+        }
+
 }
 
 
