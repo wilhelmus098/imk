@@ -9,7 +9,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span></button>
-				<a class="navbar-brand" href="list_nota_persembahan.php"><span>Laporan </span>Persembahan</a>
+				<a class="navbar-brand" href="index.php"><span>DYNAMIX </span></a>
 				<div class="navbar-brand nav navbar-top-links navbar-right" href="">
 				
 					<span>Jabatan : </span>

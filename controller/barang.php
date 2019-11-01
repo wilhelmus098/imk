@@ -30,6 +30,10 @@ if(isset($_POST['button_delete']))
     delete($_POST["idbarang"]);
 }
 
+if(isset($_POST['btn_view']))
+{
+    header('Location:../detail_product.php?id_produk='.$_POST['btn_view']);
+}
 function add($namaBarang,$kategori,$harga,$kuantitas,$deks)
 {
     global $mysqli;
@@ -77,9 +81,5 @@ function delete($id)
     mysqli_close($mysqli);
 }
 
-if(isset($_POST['btn_view']))
-{
-    //header('Location:../view_nota.php?idnota='.$_POST['btn_view']);
-    echo($_POST['btn_view']);
-}
+
 ?>

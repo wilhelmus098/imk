@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <?php
 include 'conn.php';
-include 'checksession.php';
-require_once("sidemenu.php");
+//include 'checksession.php';
+if (isset($_SESSION["user_logged_in"]))
+{
+	require_once('sidemenu.php');
+}
+if (!isset($_SESSION["user_logged_in"]))
+{
+	require_once('sidemenu_f.php');
+}
+
 
 if(isset($_GET['id_produk']))
 {
@@ -104,6 +112,7 @@ if(isset($_GET['id_produk']))
 	</style>
 </head>
 <body>
+
 	<main class="container">
  
   <!-- Left Column / Headphones Image -->
