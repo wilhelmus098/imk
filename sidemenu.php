@@ -42,6 +42,19 @@
 		<div class="divider"></div>
 		
 		<ul class="nav menu">
+
+			<li class="parent "><a data-toggle="collapse" href="#sub-item-2">
+				<em class="fa fa-navicon">&nbsp;</em> Manage Product <span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
+				</a>
+				<ul class="children collapse" id="sub-item-2">
+					<li><a class="" href="create_gereja.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Add Product
+					</a></li>
+					<li><a class="" href="list_gereja.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> List Product
+					</a></li>
+				</ul>
+			</li>
 			<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
 				<em class="fa fa-navicon">&nbsp;</em> Category <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
@@ -51,18 +64,6 @@
 						<span class="fa fa-arrow-right">&nbsp;</span> <?=$row99["produk_kategori"]?>
 						</a></li>
 					<?php } ?>
-				</ul>
-			</li>
-			<li class="parent "><a data-toggle="collapse" href="#sub-item-2">
-				<em class="fa fa-navicon">&nbsp;</em> Manage Product <span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
-				</a>
-				<ul class="children collapse" id="sub-item-2">
-					<li><a class="" href="create_gereja.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Add Product
-					</a></li>
-					<li><a class="" href="list_gereja.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Edit Product
-					</a></li>
 				</ul>
 			</li>
 			<li class="parent "><a data-toggle="collapse" href="#sub-item-3">
