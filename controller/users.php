@@ -53,6 +53,7 @@ function editUser($uname, $pwd)
     if (mysqli_query($mysqli, $sql))
     {
         echo "berhasil mengubah password!";
+        header ("Location:../logout.php");
     }
     else
     {

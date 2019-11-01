@@ -178,7 +178,7 @@ if (isset($_SESSION["user_logged_in"]))
 			
 		</div><!-- /.row -->
 <?php
-	print_r($_SESSION);
+	//print_r($_SESSION);
 ?>
 		<?php  
 			$sql = "SELECT COUNT(produk_id) FROM tProduk";  
