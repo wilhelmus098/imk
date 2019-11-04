@@ -124,12 +124,64 @@ if(isset($_GET['id_produk']))
  
   <!-- Right Column -->
   <div class="right-column">
- 
+ 	
     <!-- Product Description -->
     <div class="product-description">
 								    	<?php
+								    	if(!isset($_SESSION["user_logged_in"]))
+								    		{
 								    		while($row = $result->fetch_assoc()) {
+								    	
 								    	?>
+
+      <span><?php echo ($row['produk_kategori']); ?></span>
+  		
+      <h1><?php echo ($row['produk_nama']); ?></h1>
+      <p><?php echo ($row['produk_deskripsi']); ?></p>
+    </div>
+ 
+    <!-- Product Pricing -->
+    <div class="product-price">
+		<span>
+			<?php
+				if($row['produk_kuantitas'] == '0')
+				{
+					echo "Out of Stock";
+				}
+				if($row['produk_kuantitas'] < 50 && $row['produk_kuantitas'] > 1)
+				{
+					echo "< 50";
+				}
+				if($row['produk_kuantitas'] >= 50)
+				{
+					echo "> 50";
+				}
+				echo " Unit Avaliable";
+			?>
+			</span>
+    </div>
+    <div class="product-price">
+      <span><?php echo ("Rp." . $row['produk_harga'] . " / Unit"); ?></span>
+      
+    </div>
+    <div class="product-price" style="margin-top: 100px;">
+
+		<span><a href="#" class="cart-btn">Add to cart</a></span>
+    </div>
+
+  </div>
+  											<?php } } ?>
+
+<!-- IF LOGGED IN!!! -->
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<?php
+								    	if(!isset($_SESSION["user_logged_in"]))
+								    		{
+								    		while($row = $result->fetch_assoc()) {
+								    	
+								    	?>
+
       <span><?php echo ($row['produk_kategori']); ?></span>
   		
       <h1><?php echo ($row['produk_nama']); ?></h1>
@@ -150,7 +202,7 @@ if(isset($_GET['id_produk']))
     </div>
 
   </div>
-  											<?php } ?>
+  											<?php } } ?>
 </main>
 </body>
 </html>
