@@ -59,10 +59,16 @@
 				<em class="fa fa-navicon">&nbsp;</em> Category <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-1">
-					<?php while($row99 = $result99->fetch_assoc()) { ?>
-						<li><a class="" href="controller/barang.php?kat=<?=$row99["produk_kategori"]?>">
+				
+				<li><a class="" href="index.php?cat=">
+						<span class="fa fa-arrow-right">&nbsp;</span> SHOW ALL
+				</a></li>
+				
+				<?php while($row99 = $result99->fetch_assoc()) { ?>
+						<li><a class="" href="controller/cat.php?cat=<?=$row99["produk_kategori"]?>">
 						<span class="fa fa-arrow-right">&nbsp;</span> <?=$row99["produk_kategori"]?>
 						</a></li>
+
 					<?php } ?>
 				</ul>
 			</li>

@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <?php
 	session_start();
+	if(!isset($_SESSION['cat']))
+	{
+		$_SESSION['cat']='';
+	}
 	include 'conn.php';
 	//include 'checksession.php';
+	$cat = '';
 
-	
-	
 	$limit = 4;  
 	if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
 	$start_from = ($page-1) * $limit;  
 
 	if(isset($_GET['cat']))
 	{
-		$sql = "SELECT * FROM tProduk WHERE produk_kategori='" . $_GET['cat'] . "' ORDER BY produk_nama ASC LIMIT $start_from, $limit";  
+		$cat = $_GET['cat'];
+		$_SESSION['cat'] = $cat;
 	}
-	else
+
+	if($_SESSION['cat'] != '')
 	{
-		$sql = "SELECT * FROM tProduk ORDER BY produk_kategori ASC LIMIT $start_from, $limit";  
+		$sql = "SELECT * FROM tProduk WHERE produk_kategori='" . $_SESSION['cat'] . "' ORDER BY produk_nama ASC LIMIT $start_from, $limit";
+	}
+	if($_SESSION['cat'] == '')
+	{
+		$sql = "SELECT * FROM tProduk ORDER BY produk_kategori ASC LIMIT $start_from, $limit";
 	}
 
 	$result = mysqli_query($mysqli, $sql);
@@ -118,6 +127,8 @@ if (!isset($_SESSION["user_logged_in"]))
 						  	</table>
 <?php } ?>
 
+<?php print_r($_SESSION);?>
+
 <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 
@@ -171,22 +182,23 @@ if (isset($_SESSION["user_logged_in"]))
 ?>
 		<?php  
 
-		// if(isset($_GET['cat']))
-		// {
-		// 	$sql = "SELECT COUNT(produk_id) FROM tProduk WHERE produk_kategori='" . $_GET['cat'] . "'";
-		// 	$rs_result = mysqli_query($mysqli, $sql);  
-		// 	$row = mysqli_fetch_row($rs_result);  
-		// 	$total_records = $row[0];  
-		// 	$total_pages = ceil($total_records / $limit);  
-		// 	$pagLink = "<nav><ul class='pagination'>";  
-		// 	for ($i=1; $i<=$total_pages; $i++) 
-		// 	{  
-		// 		$pagLink .= "<li><a href='index.php?cat=" . $_GET['cat'] . "&page=".$i."'>".$i."</a></li>";
-		// 	};  
-		// 	echo $pagLink . "</ul></nav>";  
-		// }
-		// else
-		// {
+		if($_SESSION['cat'] != '')
+		{
+			$sql = "SELECT COUNT(produk_id) FROM tProduk WHERE produk_kategori='" . $_SESSION['cat'] . "'";
+			$rs_result = mysqli_query($mysqli, $sql);  
+			$row = mysqli_fetch_row($rs_result);  
+			$total_records = $row[0];  
+			$total_pages = ceil($total_records / $limit);  
+			$pagLink = "<nav><ul class='pagination'>";  
+			for ($i=1; $i<=$total_pages; $i++) 
+			{  
+				$pagLink .= "<li><a href='index.php?page=".$i."'>".$i."</a></li>";
+			};  
+			echo $pagLink . "</ul></nav>";  
+		}
+
+		else
+		{
 			$sql = "SELECT COUNT(produk_id) FROM tProduk";  
 			$rs_result = mysqli_query($mysqli, $sql);  
 			$row = mysqli_fetch_row($rs_result);  
@@ -198,7 +210,7 @@ if (isset($_SESSION["user_logged_in"]))
 				$pagLink .= "<li><a href='index.php?page=".$i."'>".$i."</a></li>";
 			};  
 			echo $pagLink . "</ul></nav>";
-		// }
+		 }
 			  
 		?>
 	</div>	<!--/.main-->
