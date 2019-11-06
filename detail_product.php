@@ -24,7 +24,7 @@ if(isset($_GET['id_produk']))
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Tambah Barang</title>
+	<title>List Barang</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/datepicker3.css" rel="stylesheet">
@@ -116,23 +116,22 @@ if(isset($_GET['id_produk']))
 
 	<main class="container">
  
-  <!-- Left Column / Headphones Image -->
-  <div class="left-column">
-    <img src="images/jay.jpg">
-  </div>
- 
- 
-  <!-- Right Column -->
-  <div class="right-column">
- 	
-    <!-- Product Description -->
-    <div class="product-description">
 								    	<?php
 								    	if(!isset($_SESSION["user_logged_in"]))
 								    		{
 								    		while($row = $result->fetch_assoc()) {
 								    	
 								    	?>
+		 <!-- Left Column / Headphones Image -->
+	  <div class="left-column">
+	    	<?php echo '<img src="images/". $row["produk_image"]>' ?>
+	  </div>
+	 
+	  <!-- Right Column -->
+	  <div class="right-column">
+	 	
+	    <!-- Product Description -->
+	    <div class="product-description">
 
       <span><?php echo ($row['produk_kategori']); ?></span>
   		
@@ -176,12 +175,23 @@ if(isset($_GET['id_produk']))
 <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 <?php
-								    	if(!isset($_SESSION["user_logged_in"]))
+								    	if(isset($_SESSION["user_logged_in"]))
 								    		{
 								    		while($row = $result->fetch_assoc()) {
 								    	
 								    	?>
 
+	 <!-- Left Column / Headphones Image -->
+	  <div class="left-column">
+	   	<img src="<?php echo"images/".$row['produk_image']; ?>">
+	  </div>
+
+		<!-- Right Column -->
+	  <div class="right-column">
+	 	
+	    <!-- Product Description -->
+	    <div class="product-description">
+	    	
       <span><?php echo ($row['produk_kategori']); ?></span>
   		
       <h1><?php echo ($row['produk_nama']); ?></h1>

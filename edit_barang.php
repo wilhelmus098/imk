@@ -38,7 +38,7 @@
 				<div class="panel panel-default"  id="section-to-print">
 					<div class="panel-body">
 						<div class="col-md-6">
-							<form role="form" method="POST" action="controller/barang.php">
+							<form role="form" method="POST" action="controller/barang.php" enctype="multipart/form-data">
 								<?php while($row = $result->fetch_assoc()) { ?>
 									<div class="form-group">
 										<label>Nama Barang></label>
@@ -70,6 +70,9 @@
 									<div class="form-group">
 										<label>Deskripsi</label>
 										<input type="text" class="form-control" name="deskripsi" value="<?=$row['produk_deskripsi']?>" required>
+									</div>
+									<div>
+										<input type="file" name="image">
 									</div>
 									<button class='btn btn-primary m-2' style="width:200px"  type="submit" name="btn_update_barang" value="<?php echo $_GET['id_produk'];?>">SAVE</button>
 								<?php } ?>

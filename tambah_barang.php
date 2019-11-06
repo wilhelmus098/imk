@@ -36,7 +36,7 @@
 				<div class="panel panel-default"  id="section-to-print">
 					<div class="panel-body">
 						<div class="col-md-6">
-							<form role="form" method="POST" action="controller/barang.php">
+							<form role="form" method="post" action="controller/barang.php" enctype="multipart/form-data">
 									<div class="form-group">
 										<label>Nama Barang</label>
 										<input type="text" class="form-control" name="namaBarang" placeholder="" required>
@@ -67,6 +67,9 @@
 									<div class="form-group">
 										<label>Deskripsi</label>
 										<input type="text" class="form-control" name="deskripsi" placeholder="" required>
+									</div>
+									<div>
+										<input type="file" name="image">
 									</div>
 									<button class='btn btn-primary m-2' style="width:200px"  type="submit" name="btn_insert_barang">SAVE</button>
 							</form>
