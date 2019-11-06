@@ -15,12 +15,21 @@
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/datepicker3.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
+	<link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+
 	
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 </head>
 <body>
 <?php
-
+	if (isset($_SESSION["user_logged_in"]))
+	{
+		require_once('sidemenu.php');
+	}
+	if (!isset($_SESSION["user_logged_in"]))
+	{
+		require_once('sidemenu_f.php');
+	}
 ?>
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
@@ -72,7 +81,10 @@
 										<input type="text" class="form-control" name="deskripsi" value="<?=$row['produk_deskripsi']?>" required>
 									</div>
 									<div>
-										<input type="file" name="image">
+										<input type="file" name="image" value="<?php echo"images/".$row['produk_image']; ?>" onchange="readURL(this);">
+									</div>
+									<div style="margin-top: 10px; margin-bottom: 10px;">
+										<img id="imgShow" style="width:200px; height:250px" src="<?php echo"images/".$row['produk_image']; ?>" alt="your image" />
 									</div>
 									<button class='btn btn-primary m-2' style="width:200px"  type="submit" name="btn_update_barang" value="<?php echo $_GET['id_produk'];?>">SAVE</button>
 								<?php } ?>
@@ -94,6 +106,9 @@
 	<script src="js/easypiechart-data.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/custom.js"></script>
+	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+
 	<script>
         function myFunction() {
             var printContents = document.getElementById("section-to-print").innerHTML;
@@ -103,6 +118,20 @@
             document.body.innerHTML = originalContents;
             return true;
         }
+        function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imgShow')
+                    .attr('src', e.target.result)
+                    .width(200)
+                    .height(250);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
     </script>
 </body>
 </html>

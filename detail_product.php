@@ -124,7 +124,7 @@ if(isset($_GET['id_produk']))
 								    	?>
 		 <!-- Left Column / Headphones Image -->
 	  <div class="left-column">
-	    	<?php echo '<img src="images/". $row["produk_image"]>' ?>
+	    	<img src="<?php echo"images/".$row['produk_image']; ?>">
 	  </div>
 	 
 	  <!-- Right Column -->

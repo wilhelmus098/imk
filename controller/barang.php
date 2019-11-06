@@ -63,7 +63,12 @@ function add($namaBarang,$kategori,$harga,$kuantitas,$desk, $target, $image)
 function update($namaBarang,$kategori,$harga,$kuantitas,$desk , $idbarang, $target, $image)
 {
     global $mysqli;
+    if($image != ""){
     $sql = "UPDATE tProduk SET produk_nama ='" . $namaBarang . "', produk_kategori = '" . $kategori . "', produk_harga = '" . $harga . "', produk_kuantitas = '" . $kuantitas ."', produk_deskripsi = '" .$desk ."', produk_image = '" . $image ."' WHERE produk_id ='" . $idbarang . "'";
+    }
+    else{
+        $sql = "UPDATE tProduk SET produk_nama ='" . $namaBarang . "', produk_kategori = '" . $kategori . "', produk_harga = '" . $harga . "', produk_kuantitas = '" . $kuantitas ."', produk_deskripsi = '" .$desk ."' WHERE produk_id ='" . $idbarang . "'";
+    }
     if (mysqli_query($mysqli, $sql))
     {
         move_uploaded_file($_FILES['image']['tmp_name'], $target);
