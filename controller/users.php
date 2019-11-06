@@ -65,6 +65,10 @@ function cekpassword($password, $nama, $passbaru, $passbaru2){
     if($password != $passlama){
         echo "<script>alert('old password missmatch!!');history.go(-1);</script>";
     }
+    if($passbaru != $passbaru2)
+    {
+        echo "<script>alert('new password missmatch!!');history.go(-1);</script>";
+    }
     else{
         editUser($nama, $passbaru, $passbaru2);
     }
@@ -73,21 +77,15 @@ function cekpassword($password, $nama, $passbaru, $passbaru2){
 function editUser($uname, $passbaru, $passbaru2)
 {
     global $mysqli;
-        if($passbaru != $passbaru2){
-            echo "<script>alert('new password doesn't match!!');history.go(-1);</script>";
-        }
-        else{
-            $sql = "UPDATE tUser SET user_pword = '" . $passbaru . "' WHERE user_uname = '" . $uname . "' ";
-            if (mysqli_query($mysqli, $sql))
-            {
-                header ("Location:../logout.php");
-            }
-            else
-            {
-                echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
-            }
-        }
-
+    $sql = "UPDATE tUser SET user_pword = '" . $passbaru . "' WHERE user_uname = '" . $uname . "' ";
+    if (mysqli_query($mysqli, $sql))
+    {
+        header ("Location:../logout.php");
+    }
+    else
+    {
+        echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
+    }
 }
 
 
