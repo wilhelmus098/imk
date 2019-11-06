@@ -127,7 +127,7 @@ if (!isset($_SESSION["user_logged_in"]))
 						  	</table>
 <?php } ?>
 
-<?php print_r($_SESSION);?>
+<?php //print_r($_SESSION);?>
 
 <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
@@ -146,7 +146,6 @@ if (isset($_SESSION["user_logged_in"]))
 									<th>KATEGORI PRODUK</th>
 									<th>HARGA PRODUK</th>
 									<th>STOK</th>
-									<th>DESKRIPSI</th>
 									<th>MANAGE</th>
 								  </tr>
 								</thead>
@@ -158,7 +157,6 @@ if (isset($_SESSION["user_logged_in"]))
 										<td><?=$row["produk_kategori"]?></td>
 										<td><?=$row["produk_harga"]?></td>
 										<td><?=$row["produk_kuantitas"]?></td>
-										<td><?=$row["produk_deskripsi"]?></td>
 										<td>
 											<button type="submit" class="btn btn-success" name="btn_edit" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-edit"></i></button>
 											<button type="submit" class="btn btn-success" name="btn_view" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-info-sign"></i></button>
