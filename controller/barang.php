@@ -33,6 +33,16 @@ if(isset($_POST['btn_update_barang']))
     update($namaBarang, $kategori, $harga, $kuantitas, $desk, $idbarang, $target, $image);
 }
 
+if(isset($_POST['btn_search']))
+{
+    header('Location:../index.php?search='.$_POST['search']);
+}
+
+if(isset($_POST['btn_clear']))
+{
+    header('Location:../index.php?cat=');
+}
+
 if(isset($_POST['button_delete']))
 {
     delete($_POST["idbarang"]);

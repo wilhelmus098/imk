@@ -27,6 +27,10 @@
 	{
 		$sql = "SELECT * FROM tProduk ORDER BY produk_kategori ASC LIMIT $start_from, $limit";
 	}
+	if(isset($_GET['search']))
+	{
+		$sql = "SELECT * FROM tProduk WHERE produk_nama LIKE '%" . $_GET['search'] . "%' OR produk_kategori LIKE '%" . $_GET['search'] . "%' ORDER BY produk_kategori ASC LIMIT $start_from, $limit";
+	}
 
 	$result = mysqli_query($mysqli, $sql);
 	?>
@@ -68,8 +72,16 @@ if (!isset($_SESSION["user_logged_in"]))
 				<li class="active">LIST PRODUK</li>
 			</ol>
 		</div><!--/.row-->
-		
-		
+		<div class="form-group">
+		<form method="POST" action=controller/barang.php>
+							<div class="form-group">
+								<label>Search product by name or category</label>
+								<input type="text" class="form-control" name="search" placeholder="Keyword">
+							</div>
+							<button type="submit" class="btn btn-primary" name="btn_search" >Search</button>
+							<!-- <button type="submit" class="btn btn-primary" name="btn_clear" >Clear</button> -->
+		<form>
+		</div>
 		<div class="row">
 			<div class="col-lg-12">
 			<!-- <div class="text-center" style="margin: 8px;">
