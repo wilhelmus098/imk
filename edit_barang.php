@@ -5,6 +5,9 @@
 
 	$sql = "SELECT * FROM tProduk WHERE produk_id = '" . $_GET["id_produk"] . "'";  
 	$result = mysqli_query($mysqli, $sql);
+
+	$sql2 = "SELECT DISTINCT produk_kategori FROM tProduk";
+	$result2 = mysqli_query($mysqli, $sql2);
 ?>
 <html>
 <head>
@@ -57,12 +60,9 @@
 									<div class="form-group">
 										<label>Kategori</label>
 										<select class="form-control" name="kategori" required>
-											<option value="KEYBOARD">KEYBOARD</option>
-											<option value="MOUSE">MOUSE</option>
-											<option value="MONITOR">MONITOR</option>
-											<option value="VGA">VGA</option>
-											<option value="PSU">PSU</option>
-											<option value="CPU">CPU</option>
+											<?php while($row2 = $result2->fetch_assoc()) { ?>
+												<option value="<?=$row2['produk_kategori']?>"><?=$row2['produk_kategori']?></option>
+											<?php } ?>
 										</select>
 									</div>
 

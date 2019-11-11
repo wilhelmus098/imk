@@ -3,6 +3,9 @@
 	include 'conn.php';
 	include 'checksession.php';
 	require_once('sidemenu.php');
+
+	$sql = "SELECT DISTINCT produk_kategori FROM tProduk";
+	$result = mysqli_query($mysqli, $sql);
 ?>
 <html>
 <head>
@@ -46,12 +49,9 @@
 									<div class="form-group">
 										<label>Kategori</label>
 										<select class="form-control" name="kategori" required>
-											<option value="KEYBOARD">KEYBOARD</option>
-											<option value="MOUSE">MOUSE</option>
-											<option value="MONITOR">MONITOR</option>
-											<option value="VGA">VGA</option>
-											<option value="PSU">PSU</option>
-											<option value="CPU">CPU</option>
+											<?php while($row = $result->fetch_assoc()) { ?>
+												<option value="<?=$row['produk_kategori']?>"><?=$row['produk_kategori']?></option>
+											<?php } ?>
 										</select>
 									</div>
 
