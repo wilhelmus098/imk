@@ -60,9 +60,12 @@
 									<div class="form-group">
 										<label>Kategori</label>
 										<select class="form-control" name="kategori" required>
-											<?php while($row2 = $result2->fetch_assoc()) { ?>
+											<?php while($row2 = $result2->fetch_assoc()) {
+												if($row['produk_kategori'] == $row2['produk_kategori']) {?>
+												<option value="<?=$row2['produk_kategori']?>" selected><?=$row2['produk_kategori']?></option>
+											<?php } else{ ?>
 												<option value="<?=$row2['produk_kategori']?>"><?=$row2['produk_kategori']?></option>
-											<?php } ?>
+											<?php }} ?>
 										</select>
 									</div>
 
