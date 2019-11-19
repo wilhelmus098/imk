@@ -22,7 +22,7 @@
 				</div>
 				<!-- <div class="navbar-brand nav navbar-top-links navbar-right" href=""> -->
 				
-					<span>Jabatan : </span>
+					<!-- <span>Jabatan : </span> -->
 					<?php
 						// if (isset($_SESSION["user_logged_in"]))
 						// {

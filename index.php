@@ -78,7 +78,7 @@ if (!isset($_SESSION["user_logged_in"]))
 								<label>Search product by name or category</label>
 								<input type="text" class="form-control" name="search" placeholder="Keyword">
 							</div>
-							<button type="submit" class="btn btn-primary" name="btn_search" >Search</button>
+							<button type="submit" class="btn btn-primary" name="btn_search"><i class="glyphicon glyphicon-search"></i> Search</button>
 							<!-- <button type="submit" class="btn btn-primary" name="btn_clear" >Clear</button> -->
 		<form>
 		</div>
@@ -170,8 +170,8 @@ if (isset($_SESSION["user_logged_in"]))
 										<td><?=$row["produk_harga"]?></td>
 										<td><?=$row["produk_kuantitas"]?></td>
 										<td>
-											<button type="submit" class="btn btn-success" name="btn_edit" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-edit"></i></button>
-											<button type="submit" class="btn btn-success" name="btn_view" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-info-sign"></i></button>
+											<button type="submit" class="btn btn-info" name="btn_edit" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-pencil"></i></button>
+											<button type="submit" class="btn btn-warning" name="btn_view" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-info-sign"></i></button>
 										</td>
 									</tr>
 								<?php } ?>
