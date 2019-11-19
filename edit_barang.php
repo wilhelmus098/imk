@@ -89,7 +89,7 @@
 									<div style="margin-top: 10px; margin-bottom: 10px;">
 										<img id="imgShow" style="width:200px; height:250px" src="<?php echo"images/".$row['produk_image']; ?>" alt="your image" />
 									</div>
-									<button class='btn btn-primary m-2' style="width:200px"  type="submit" name="btn_update_barang" value="<?php echo $_GET['id_produk'];?>">SAVE</button>
+									<button class='btn btn-primary m-2' style="width:200px"  type="submit" name="btn_update_barang" value="<?php echo $_GET['id_produk'];?>"><i class="glyphicon glyphicon-floppy-disk"></i>    SAVE</button>
 								<?php } ?>
 							</form>
 						</div>

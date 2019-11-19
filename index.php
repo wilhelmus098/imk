@@ -38,7 +38,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Lumino - Dashboard</title>
+	<title>Product List</title>
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/datepicker3.css" rel="stylesheet">
@@ -69,16 +69,16 @@ if (!isset($_SESSION["user_logged_in"]))
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">LIST PRODUK</li>
+				<li class="active">PROCUCT LIST</li>
 			</ol>
 		</div><!--/.row-->
 		<div class="form-group">
 		<form method="POST" action=controller/barang.php>
-							<div class="form-group">
+							<div class="form-group" style="padding-top:10px;">
 								<label>Search product by name or category</label>
 								<input type="text" class="form-control" name="search" placeholder="Keyword">
 							</div>
-							<button type="submit" class="btn btn-primary" name="btn_search" >Search</button>
+							<button type="submit" class="btn btn-primary" name="btn_search"><i class="glyphicon glyphicon-search"></i> Search</button>
 							<!-- <button type="submit" class="btn btn-primary" name="btn_clear" >Clear</button> -->
 		<form>
 		</div>
@@ -101,10 +101,10 @@ if (!isset($_SESSION["user_logged_in"]))
 							<table class="table table-hover">
 								<thead>
 								  <tr>
-									<th>NAMA PRODUK</th>
-									<th>KATEGORI PRODUK</th>
-									<th>HARGA PRODUK</th>
-									<th>STOK</th>
+									<th>NAME</th>
+									<th>CATEGORY</th>
+									<th>UNIT PRICE</th>
+									<th>STOCK</th>
 									<th>DETAIL</th>
 								  </tr>
 								</thead>
@@ -131,7 +131,7 @@ if (!isset($_SESSION["user_logged_in"]))
 										?>
 										</td>
 										<td>
-										<button type="submit" class="btn btn-success" name="btn_view" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-info-sign"></i></button>
+										<button type="submit" class="btn btn-warning" name="btn_view" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-info-sign"></i></button>
 										</td>
 									</tr>
 								<?php } ?>
@@ -153,12 +153,12 @@ if (isset($_SESSION["user_logged_in"]))
 							<table class="table table-hover">
 								<thead>
 								  <tr>
-									<th>ID PRODUK</th>
-									<th>NAMA PRODUK</th>
-									<th>KATEGORI PRODUK</th>
-									<th>HARGA PRODUK</th>
-									<th>STOK</th>
-									<th>MANAGE</th>
+									<th>ID</th>
+									<th>NAME</th>
+									<th>CATEGORY</th>
+									<th>UNIT PRICE</th>
+									<th>STOCK</th>
+									<th>ACTION</th>
 								  </tr>
 								</thead>
 								<tbody>
@@ -170,8 +170,8 @@ if (isset($_SESSION["user_logged_in"]))
 										<td><?=$row["produk_harga"]?></td>
 										<td><?=$row["produk_kuantitas"]?></td>
 										<td>
-											<button type="submit" class="btn btn-success" name="btn_edit" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-edit"></i></button>
-											<button type="submit" class="btn btn-success" name="btn_view" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-info-sign"></i></button>
+											<button type="submit" class="btn btn-info" name="btn_edit" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-pencil"></i></button>
+											<button type="submit" class="btn btn-warning" name="btn_view" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-info-sign"></i></button>
 										</td>
 									</tr>
 								<?php } ?>

@@ -9,29 +9,39 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span></button>
-				<a class="navbar-brand" href="index.php"><span>DYNAMIX </span></a>
-				<div class="navbar-brand nav navbar-top-links navbar-right" href="">
+				<a class="navbar-brand" href="index.php"><span>DYNAMIX </span>Inventory System</a>
+				<div class="navbar-brand nav navbar-top-links navbar-right" href=""> 
+					<span>
+						<?php
+							if (isset($_SESSION["user_logged_in"]))
+							{
+								echo 'Welcome, ' . $_SESSION["uname"];
+							}	
+						?>
+					</span>
+				</div>
+				<!-- <div class="navbar-brand nav navbar-top-links navbar-right" href=""> -->
 				
-					<span>Jabatan : </span>
+					<!-- <span>Jabatan : </span> -->
 					<?php
-						if (isset($_SESSION["user_logged_in"]))
-						{
-							echo $_SESSION["jabatan"];
-						}	
+						// if (isset($_SESSION["user_logged_in"]))
+						// {
+						// 	echo $_SESSION["jabatan"];
+						// }	
 					?>
 					
-				</div>
-				<div class="navbar-brand nav navbar-top-links navbar-right" href="">
+				<!-- </div> -->
+				<!-- <div class="navbar-brand nav navbar-top-links navbar-right" href=""> -->
 				
-					<span>Username : </span>
+					<!-- <span>Username : </span> -->
 					<?php
-						if (isset($_SESSION["user_logged_in"]))
-						{
-							echo $_SESSION["uname"];
-						}	
+						// if (isset($_SESSION["user_logged_in"]))
+						// {
+						// 	echo $_SESSION["uname"];
+						// }	
 					?>
 					
-				</div>
+				<!-- </div> -->
 				
 				
 			</div>
