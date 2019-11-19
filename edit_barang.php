@@ -40,7 +40,7 @@
 				<li><a href="list_product.php">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Edit Barang!</li>
+				<li class="active">Edit Barang</li>
 			</ol>
 		</div><!--/.row-->
 		
