@@ -69,7 +69,7 @@ if (!isset($_SESSION["user_logged_in"]))
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">PROCUCT LIST</li>
+				<li class="active">PRODUCT LIST</li>
 			</ol>
 		</div><!--/.row-->
 		<div class="form-group">
