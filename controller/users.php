@@ -21,14 +21,12 @@ if(isset($_POST['btnUpdate']))
     $passbaru2 = $_POST['password2'];
 
     cekpassword($passlama, $uname, $passbaru, $passbaru2);
-
-    // editUser($uname, $pass);
 }
 
-if(isset($_POST['btn_login']))
-{
-    header("Location:../logout.php");
-}
+// if(isset($_POST['btn_login']))
+// {
+//     header("Location:../logout.php");
+// }
 
 // ---------------------------------------------------------
 // METHOD
@@ -63,11 +61,11 @@ function cekpassword($password, $nama, $passbaru, $passbaru2){
     // echo "$passbaru2<br>";
 
     if($password != $passlama){
-        echo "<script>alert('old password missmatch!!');history.go(-1);</script>";
+        echo "err1";
     }
-    if($passbaru != $passbaru2)
+    else if($passbaru != $passbaru2)
     {
-        echo "<script>alert('new password missmatch!!');history.go(-1);</script>";
+        echo "err2";
     }
     else{
         editUser($nama, $passbaru, $passbaru2);
@@ -80,7 +78,7 @@ function editUser($uname, $passbaru, $passbaru2)
     $sql = "UPDATE tUser SET user_pword = '" . $passbaru . "' WHERE user_uname = '" . $uname . "' ";
     if (mysqli_query($mysqli, $sql))
     {
-        header ("Location:../logout.php");
+        echo "ok";
     }
     else
     {

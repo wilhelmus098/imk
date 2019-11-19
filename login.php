@@ -3,7 +3,7 @@
 session_start();
 if (isset($_SESSION["user_logged_in"]))
 {
-	header("location:register.php");
+	header("location:index.php");
 }
 ?>
 <html>
@@ -21,8 +21,8 @@ if (isset($_SESSION["user_logged_in"]))
 			<div class="login-panel panel panel-default">
 				<div class="panel-heading">Log in</div>
 				<div class="panel-body">
-
-					<form role="form" method="POST" action="controller/login.php">
+					<div class="alert alert-danger" role="alert" id="error" style="display: none;">...</div>
+					<form role="form" method="POST" id="login-form">
 						<fieldset>
 							<div class="form-group">
 								<input class="form-control" id="username" placeholder="Username" name="username" type="text" autofocus="">
@@ -30,7 +30,7 @@ if (isset($_SESSION["user_logged_in"]))
 							<div class="form-group">
 								<input class="form-control" id="password" placeholder="Password" name="password" type="password" value="">
 							</div>
-							<input type="submit" class="btn btn-primary" id="submit" name="btn_login" value="Login"></input><span>
+							<input type="submit" class="btn btn-primary" id="btn_login" name="btn_login" value="Login"></input><span>
 							</span>
 							
 					</form>
@@ -49,35 +49,52 @@ if (isset($_SESSION["user_logged_in"]))
 
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
 <script type="text/javascript">
-			$(document).ready(function(){
-				$(document).keypress(function(a){
-					if (a.which == 13)
-					{
-						$.post("controller/login.php",{username: username.value, password: password.value},function(data){	
-							console.log(data);
-							if(data == 1)
-							{
-								window.open("register.php","_self")
+		
+			$("#login-form").validate({
+				rules: {
+					password: {
+						required: true,
+					},
+					username: {
+						required: true,
+					},
+				},
+				messages: {
+					password:{
+					  required: "Please enter your password"
+					 },
+					username: "Please enter your username",
+				},
+				submitHandler: submitForm 
+			});
+			function submitForm() {		
+					var data = $("#login-form").serialize();
+					$.ajax({				
+						type : 'POST',
+						url  : 'controller/login.php',
+						data : data,
+						beforeSend: function(){	
+							$("#error").fadeOut();
+							$("#btn_login").html('<span class="glyphicon glyphicon-transfer"></span> &nbsp; sending ...');
+						},
+						success : function(response){	
+							console.log(response);
+							if($.trim(response) === "ok"){
+					          setTimeout(' window.location.href = "index.php"; ',100);
+					         }
+							else if($.trim(response) === "no"){								
+								$("#error").fadeIn(1000, function(){						
+									 $("#error").html('<div class="alert alert-danger"> <span class="glyphicon glyphicon-info-sign"></span>   username atau password salah!.</div>');
+								});
 							}
-							else
-								$("#error").text("WRONG USERNAME AND PASSWORD")
-						}) 
-					} 
-					
-				})
-				$("#submit").click(function(){
-					$.post("controller/login.php",{username: username.value, password: password.value},function(data){		
-						console.log(data);
-						if(data == 1)
-						{
-							window.open("register.php","_self")
 						}
-						else
-							$("#error").text("wrong username or password")
-					}) 	
-				})	
-			})
-		</script>
+					});
+					return false;
+				}
+				// action="controller/login.php"
+</script>
 </body>
 </html>
