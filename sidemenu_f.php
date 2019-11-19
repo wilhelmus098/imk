@@ -25,21 +25,13 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span></button>
-				<a class="navbar-brand" href="index.php"><span>Dynamix </span></a>
+				<a class="navbar-brand" href="index.php"><span>Dynamix </span>Inventory System</a>
 				<div class="navbar-brand nav navbar-top-links navbar-right" href="">
 				<span>
 						<form method="POST" action=controller/users.php>
-						<div style="padding-bottom:25px;">
-						<button type="submit" class="btn btn-info" id="submit" name="btn_login" value="Login">Sign In</button>
-						</div>
+						<button style="margin-bottom:10px; margin-top:-5px;" type="submit" class="btn btn-info" id="submit" name="btn_login" value="Login">Sign In</button>
 						</form>
 				</span>
-				</div>
-				<div class="navbar-brand nav navbar-top-links navbar-right" href="">
-				</div>
-				
-				
-
 			</div>
 		</div><!-- /.container-fluid -->
 	</nav>
