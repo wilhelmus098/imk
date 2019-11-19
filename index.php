@@ -131,7 +131,7 @@ if (!isset($_SESSION["user_logged_in"]))
 										?>
 										</td>
 										<td>
-										<button type="submit" class="btn btn-success" name="btn_view" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-info-sign"></i></button>
+										<button type="submit" class="btn btn-warning" name="btn_view" value="<?=$row["produk_id"]?>"><i class="glyphicon glyphicon-info-sign"></i></button>
 										</td>
 									</tr>
 								<?php } ?>
