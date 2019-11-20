@@ -23,10 +23,10 @@ if(isset($_POST['btnUpdate']))
     cekpassword($passlama, $uname, $passbaru, $passbaru2);
 }
 
-// if(isset($_POST['btn_login']))
-// {
-//     header("Location:../logout.php");
-// }
+if(isset($_POST['btn_login']))
+{
+    header("Location:../logout.php");
+}
 
 // ---------------------------------------------------------
 // METHOD
