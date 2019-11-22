@@ -147,15 +147,15 @@ if(isset($_GET['id_produk']))
 				{
 					echo "Out of Stock";
 				}
-				if($row['produk_kuantitas'] < 50 && $row['produk_kuantitas'] > 1)
+				if($row['produk_kuantitas'] <= 50 && $row['produk_kuantitas'] > 1)
 				{
-					echo "< 50";
+					echo "Less than 51 unit available";
 				}
-				if($row['produk_kuantitas'] >= 50)
+				if($row['produk_kuantitas'] > 50)
 				{
-					echo "> 50";
+					echo "More than 50 unit available";
 				}
-				echo " Unit Avaliable";
+				// echo " Unit Avaliable";
 			?>
 			</span>
     </div>
