@@ -1,10 +1,13 @@
 <?php
-
+// FOR ONLINE USE
 $srvName = "sql172.main-hosting.eu"; //SERVER ADDRESS OR IP SERVER
 $srvUser = "u947864388_imk"; // USER ID TO DATABASE
 $srvPWD = "087886002060"; //PWD TO ACCESS DATABASE
 $dbName = "u947864388_imk"; //DATABASE NAME
+//
 
+
+// FOR OFFLINE USE
 // $srvName = "localhost"; //SERVER ADDRESS OR IP SERVER
 // $srvUser = "root"; // USER ID TO DATABASE
 // $srvPWD = ""; //PWD TO ACCESS DATABASE
